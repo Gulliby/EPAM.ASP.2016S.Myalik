@@ -1,7 +1,7 @@
 ﻿// <copyright file="AssemblyInfo.cs" company="No Company">
 //     Copyright (c) Sprocket Enterprises. All rights reserved.
 // </copyright>
-// <author>Our Party</author>
+// <author>Ilya Myalik</author>
 using System.Reflection;
 using System.Runtime.InteropServices;
 

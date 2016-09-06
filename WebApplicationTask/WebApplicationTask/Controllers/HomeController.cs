@@ -1,11 +1,13 @@
 ﻿// <copyright file="HomeController.cs" company="No Company">
 //     Copyright (c) Sprocket Enterprises. All rights reserved.
 // </copyright>
-// <author>Our Party</author>
+// <author>Ilya Myalik</author>
+
 namespace WebApplicationTask.Controllers
 {
+    using System.Web.Helpers;
     using System.Web.Mvc;
-
+   
     /// <summary>
     /// Entry point.
     /// </summary>
@@ -15,31 +17,31 @@ namespace WebApplicationTask.Controllers
         /// Entry point.
         /// </summary>
         /// <param name="id">An identifier is a name that identifies either a unique object or a unique class of object.</param>
-        /// <returns>JsonResult instance.</returns>
+        /// <returns>View instance.</returns>
         public ActionResult Index(int? id)
         {
-            return new JsonResult();
+            return this.View();
         }
 
         /// <summary>
         /// About view.
         /// </summary>
         /// <param name="id">An identifier is a name that identifies either a unique object or a unique class of object.</param>
-        /// <returns>JsonResult instance.</returns>
+        /// <returns>View instance.</returns>
         public ActionResult About(int? id)
         {
-            return new JsonResult();
+            return this.View();
         }
 
         /// <summary>
         /// Info view.
         /// </summary>
-        /// <param name="id">An identifier is a name that identifies either a unique object or a unique class of object.</param>
         /// <param name="superSection">Custom segment.</param>
-        /// <returns>JsonResult instance.</returns>
-        public ActionResult Info(int? id, string superSection)
+        /// <returns>View instance.</returns>
+        public ActionResult Info(string superSection)
         {
-            return new JsonResult();
+            ViewBag.SuperSection = superSection;
+            return this.View();
         }
     }
 }

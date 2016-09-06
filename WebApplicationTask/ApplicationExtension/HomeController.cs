@@ -1,7 +1,7 @@
 ﻿// <copyright file="HomeController.cs" company="No Company">
 //     Copyright (c) Sprocket Enterprises. All rights reserved.
 // </copyright>
-// <author>Our Party</author>
+// <author>Ilya Myalik</author>
 namespace ApplicationExtension
 {
     using System.Web.Mvc;
@@ -15,12 +15,10 @@ namespace ApplicationExtension
         /// Info view.
         /// </summary>
         /// <param name="id">An identifier is a name that identifies either a unique object or a unique class of object.</param>
-        /// <param name="superSection">Custom segment.</param>
-        /// <returns>JsonResult instance.</returns>
-        public ActionResult Info(int? id, string superSection)
+        /// <returns>JavaScript object notation result instance.</returns>
+        public ActionResult Info(int? id)
         {
-            ViewBag.Word = "test title";
-            return new JsonResult(); 
+            return this.Json(null, JsonRequestBehavior.AllowGet);
         }
     }
 }
