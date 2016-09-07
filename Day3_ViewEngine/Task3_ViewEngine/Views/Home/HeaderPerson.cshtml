@@ -1,0 +1,8 @@
+﻿@model Task3_ViewEngine.Models.Person
+<div id="header-person">
+    <h2> Name of the faction @Model.FactionName </h2>
+    @{
+        string image = $"data:image/jpeg;base64,{Convert.ToBase64String(Model.Icon)}";
+    }
+    <img style="width: 100px; height: 100px; border-radius: 50%; background-size: cover; background-repeat: no-repeat;" src="@image" alt="" />
+</div>
