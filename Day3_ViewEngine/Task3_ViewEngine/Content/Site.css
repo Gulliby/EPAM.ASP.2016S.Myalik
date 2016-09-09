@@ -1,18 +1,10 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿*{ margin: 0; padding: 0; }
+.orange { color:orange; }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+.header-image { width: 100px; height: 100px; border-radius: 50%; background-size: cover; background-repeat: no-repeat; }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+.main-block { min-height: calc(100vh - 40px); }
+.content-block { width: 40%; min-width: 350px; margin: auto; padding: 10px;border: 2px gray solid; box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.45); margin-top: 10px;}
+.radio-block{ margin-left: 30px; width: 50%; margin-top: 8px; }
 
+#footer{ height: 40px; text-align: center; font-size: 18px;background-color: grey; padding-top: 10px; color: ghostwhite;}

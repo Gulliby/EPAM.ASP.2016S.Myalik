@@ -1,12 +1,17 @@
-﻿@model Task3_ViewEngine.Models.Person
+﻿@model Day3_WebApplication.Models.Person
 
 @{
     ViewBag.Title = "Person";
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        OnSuccess = "success",
+    };
 }
 
 @section NavbarSection{
-    @{ string navbarStyle = Model.Faction? "navbar-inverse" : ""; } 
-    <div class="navbar @navbarStyle navbar-fixed-top" id="navbar">
+    @{ var navbarStyle = Model.Faction ? "navbar-inverse" : ""; } 
+    <div class="navbar @navbarStyle" id="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -14,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Create", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Create New", "Create", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
@@ -25,22 +30,11 @@
 
 @Html.Partial("HeaderPerson", Model)
 
-<h3 style="color:red;">@Model.Name</h3>
+<h3 class="orange">@Model.Name</h3>
 
-@section FooterSection{
-    <footer id="footer">
-        <h4>Join other side Yes/No</h4>
-        @Ajax.ActionLink("Yes", "Change", new { id = Model.Id }, new AjaxOptions
-   {
-       HttpMethod = "Post",
-       OnSuccess = "success",
-   }, new { @class = "btn btn-primary", @id = "switchButton" })
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+@section FooterSection{  
+    <h4>Join other side Yes/No</h4>
+    @Ajax.ActionLink("Yes", "Change", new { id = Model.Id }, ajaxOptions, new { @class = "btn btn-primary", @id = "switchButton" })
 }
-
 <script src="~/Scripts/CustomScripts/LayoutScript.js"></script>
-<script>function success(data) {
-    $("#header-person").replaceWith(data);
-}</script>
 

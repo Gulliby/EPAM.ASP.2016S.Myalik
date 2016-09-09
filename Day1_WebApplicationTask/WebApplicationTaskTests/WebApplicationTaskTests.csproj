@@ -120,9 +120,9 @@
       <Project>{3a6d3b88-0d1c-47d5-ab60-b78e464af7e9}</Project>
       <Name>ApplicationExtension</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebApplicationTask\WebApplicationTask.csproj">
+    <ProjectReference Include="..\WebApplicationTask\Day1_WebApplicationTask.csproj">
       <Project>{147221e3-85ab-4bb3-a90b-86dd26bf7fee}</Project>
-      <Name>WebApplicationTask</Name>
+      <Name>Day1_WebApplicationTask</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

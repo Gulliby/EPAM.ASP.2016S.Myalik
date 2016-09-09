@@ -2,36 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Task3_ViewEngine.Models;
-using Task3_ViewEngine.Repository.Interface;
+using Day3_WebApplication.Models;
+using Day3_WebApplication.Repository.Interface;
 
-namespace Task3_ViewEngine.Repository
+namespace Day3_WebApplication.Repository
 {
     public class UserRepository : IRepository<Person>
     {
         private static volatile UserRepository instance;
         private static readonly object syncRoot = new object();
         private static readonly object writeRoot = new object();
+        private readonly List<Person> persons;
 
-        public IList<Person> Persons { get; }
-      
+        public IEnumerable<Person> Persons => persons.ToArray();
+
         public static UserRepository Instance
         {
             get
             {
-                if (instance == null)
+                if (instance != null) return instance;
+                lock (syncRoot)
                 {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                            instance = new UserRepository();
-                    }
+                    if (instance == null)
+                        instance = new UserRepository();
                 }
                 return instance;
             }
         }
 
-        private UserRepository() { Persons = new List<Person>(); }
+        private UserRepository() { persons = new List<Person>(); }
 
         public int Create(Person entity)
         {
@@ -39,11 +38,25 @@ namespace Task3_ViewEngine.Repository
             {
                 if (entity == null)
                     throw new ArgumentNullException(nameof(entity));
-                Persons.Add(entity);
-                var count = Persons.Count;
+                var count = persons.Count + 1;
                 entity.Id = count;
+                persons.Add(entity);
                 return count;
             }
+        }
+
+        public void Edit(Person entity)
+        {
+            lock (writeRoot)
+            {
+                var index = persons.FindIndex(e => e.Id == entity.Id);
+                persons[index] = entity;
+            }
+        }
+
+        public Person GetById(int id)
+        {
+            return persons.FirstOrDefault(e => e.Id == id);
         }
     }
 }

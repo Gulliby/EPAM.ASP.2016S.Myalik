@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTask", "WebApplicationTask\WebApplicationTask.csproj", "{147221E3-85AB-4BB3-A90B-86DD26BF7FEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1_WebApplicationTask", "WebApplicationTask\Day1_WebApplicationTask.csproj", "{147221E3-85AB-4BB3-A90B-86DD26BF7FEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationExtension", "ApplicationExtension\ApplicationExtension.csproj", "{3A6D3B88-0D1C-47D5-AB60-B78E464AF7E9}"
 EndProject

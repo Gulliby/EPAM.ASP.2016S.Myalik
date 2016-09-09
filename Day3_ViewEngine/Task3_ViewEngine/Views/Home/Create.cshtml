@@ -1,11 +1,10 @@
-﻿@model Task3_ViewEngine.Models.Person
+﻿@model Day3_WebApplication.Models.Person
 
 @{
     ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
-
 
 @using (Html.BeginForm()) 
 {
@@ -25,7 +24,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.FactionName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="radio-block col-md-10">
                 <div class="">
                     <input class="radio-inline" type="radio" name="Faction" value="false" checked/>White
                     <input class="radio-inline" type="radio" name="Faction" value="true"/>Dark        
@@ -45,7 +44,3 @@
 <div>
     @Html.ActionLink("Back to List", "PersonsList")
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

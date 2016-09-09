@@ -10,3 +10,7 @@
         }
     }
 });
+
+function success(data) {
+    $("#header-person").replaceWith(data);
+}

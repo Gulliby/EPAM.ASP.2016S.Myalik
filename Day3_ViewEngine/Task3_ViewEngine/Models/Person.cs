@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Task3_ViewEngine.Models
+namespace Day3_WebApplication.Models
 {
     public class Person : IEntity
     {

@@ -4,11 +4,11 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Task3_ViewEngine.Models;
-using Task3_ViewEngine.Repository;
+using Day3_WebApplication.Models;
+using Day3_WebApplication.Repository;
 using System.IO;
 
-namespace Task3_ViewEngine.Controllers
+namespace Day3_WebApplication.Controllers
 {
     public class HomeController : Controller
     {
@@ -22,13 +22,13 @@ namespace Task3_ViewEngine.Controllers
         // GET: Home
         public ActionResult Person(int id)
         {
-            return View(userRepository.Persons.FirstOrDefault(e => e.Id == id));
+            return View(userRepository.GetById(id));
         }
 
         [ChildActionOnly]
-        public ActionResult HeaderPerson(Person person)
+        public ActionResult HeaderPerson(int id)
         {
-            return PartialView("HeaderPerson", person);
+            return PartialView("HeaderPerson", userRepository.GetById(id));
         }
 
         [HttpGet]
@@ -45,42 +45,36 @@ namespace Task3_ViewEngine.Controllers
 
         public ActionResult Change(int id)
         {
-            var person = userRepository.Persons.FirstOrDefault(e => e.Id == id);
+            var person = userRepository.GetById(id);
             SwitchSide(person, true);
-            if (Request.IsAjaxRequest())
-            {
-                return HeaderPerson(person);
-            }
-            return RedirectToAction("Person", new { id = id });
+            return Request.IsAjaxRequest() ? HeaderPerson(id) : RedirectToAction("Person", new { id });
         }
 
         [NonAction]
         private void SwitchSide(Person person, bool side)
         {
-            person.Faction = side;
-            person.Icon = System.IO.File.ReadAllBytes(person.Faction ? Server.MapPath("~/Content/dark.png") : Server.MapPath("~/Content/white.jpg"));
-            person.FactionName = person.Faction ? "Dark side" : "White side";
+            var changedPerson = new Person
+            {
+                Id = person.Id,
+                Faction = side
+            };
+            changedPerson.Icon =
+                System.IO.File.ReadAllBytes(changedPerson.Faction
+                    ? Server.MapPath("~/Content/dark.png")
+                    : Server.MapPath("~/Content/white.jpg"));
+            changedPerson.FactionName = changedPerson.Faction ? "Dark side" : "White side";
+            changedPerson.Name = person.Name;
+            userRepository.Edit(changedPerson);
         }
 
         [HttpPost]
         [ActionName("Create")]
         public ActionResult CreatePost(Person person)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    int id = userRepository.Create(person);
-                    person.Id = id;
-                    SwitchSide(person, person.Faction);
-                    return RedirectToAction("Person", new { id = id });
-                }
-            }
-            catch
-            {
-
-            }
-            return View();
+            if (!ModelState.IsValid) return View();
+            var id = userRepository.Create(person);
+            SwitchSide(person, person.Faction);
+            return RedirectToAction("Person", new { id });
         }
     }
 }
