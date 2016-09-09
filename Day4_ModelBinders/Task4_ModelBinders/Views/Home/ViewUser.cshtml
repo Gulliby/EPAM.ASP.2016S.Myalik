@@ -1,0 +1,86 @@
+﻿@model Task4_ModelBinders.Models.User
+
+@{
+    ViewBag.Title = "ViewUser";
+}
+
+<h2>ViewUser</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Line1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Line1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Line2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Line2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.PostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Summary)
+        </dt>
+
+        <dd>
+            @Model.Address.Summary
+        </dd>
+
+    </dl>
+</div>
